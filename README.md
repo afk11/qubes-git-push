@@ -7,4 +7,4 @@ An example usage is a git repository in a network isolated VM. Changes to the
 repo can be dispatched to a trusted SSH VM which deals with networking protocols,
 and cryptographic keys.
 
-
+For now this is limited to simply pushing a repo.
