@@ -1,0 +1,10 @@
+#!/bin/bash
+# client script for triggering qrexec for
+# git push. 
+
+if [ $# -ne 1 ] ; then
+	echo usage: $0 '<path to repository>'
+	exit 1
+fi
+
+exec /usr/bin/qrexec-client-vm 'ssh' qubes.GitPush /usr/bin/git-push-client "$@"
