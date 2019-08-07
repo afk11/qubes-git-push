@@ -2,21 +2,16 @@
 
 # receives file, untar and push
 
-INPUT_FILE=$(mktemp --tmpdir git-push-XXXXXXXX)
-TMP_DIR=$(mktemp --directory git-repo-XXXXXXXX)
+TMP_DIR=$(mktemp --tmpdir --directory git-repo-XXXXXXXX)
 
 # Get the original data
-cat > "$INPUT_FILE"
-
-# untar file
-tar -C "$TMP_DIR" -xf "$INPUT_FILE"
+cat | tar -C "$TMP_DIR" -xf -
 
 # cd and push
 cd $(ls -d $TMP_DIR/.??*) && git push
 
 # cleanup
 cd /
-rm "$INPUT_FILE"
 rm -rf "$TMP_DIR"
 
 

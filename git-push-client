@@ -2,10 +2,7 @@
 
 INPUT_PATH="$1"
 echo "-> Sending $INPUT_PATH to Disposable VM..." >&2
-rm /tmp/tar -f
-tar -cf /tmp/tar "$INPUT_PATH"
-cat /tmp/tar
+tar -cf - "$INPUT_PATH"
 echo "-> any output from call:" >&2
 exec cat >&$SAVED_FD_1
 echo "-> Done..." >&2
-
